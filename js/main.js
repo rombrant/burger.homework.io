@@ -6,7 +6,7 @@
       const maxTop = (section.length- 1)* sectionHeight;
       console.log(maxTop);
       var inScroll = false;
-      $(window).on('mousewheel', e => {
+      $(window).on('wheel', e => {
           if (!inScroll) {
               inScroll = true;
             if (event.deltaY < 0 && curTop < 0 ) {
