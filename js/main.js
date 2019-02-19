@@ -1,11 +1,44 @@
-       window.addEventListener('wheeldown', e => {
-            const wrapper = document.querySelector('.wrapper');
-            const sectionHeight = wrapper.firstElementChild.getBoundingClientRect().height;
-            let curHeight = 0;
-            let maxHeight = (wrapper.length - 1) * sectionHeight;
-            wrapper.style.top = sectionHeight+'px';
-       });
-       
+
+     console.log();
+     const section = $('section');
+      const sectionHeight = $('section').outerHeight(true);
+      let curTop = 0;
+      const maxTop = (section.length- 1)* sectionHeight;
+      console.log(maxTop);
+      var inScroll = false;
+      $(window).on('mousewheel', e => {
+          if (!inScroll) {
+              inScroll = true;
+            if (event.deltaY < 0 && curTop < 0 ) {
+                curTop= curTop + sectionHeight;
+                $('.wrapper').css('top', curTop+'px');
+            } else if (event.deltaY > 0 && curTop > -maxTop) {
+              curTop = curTop - sectionHeight;
+              $('.wrapper').css('top', curTop+'px');
+            }
+            setTimeout(function(){
+                inScroll= false;
+              },900);
+          }
+          });
+          
+          $(window).on({'touchmove': e => {
+              console.log(e.touchstat);
+            if (!inScroll) {
+                inScroll = true;
+              if (event.deltaY < 0 && curTop < 0 ) {
+                  curTop= curTop + sectionHeight;
+                  $('.wrapper').css('top', curTop+'px');
+              } else if (event.deltaY > 0 && curTop > -maxTop) {
+                curTop = curTop - sectionHeight;
+                $('.wrapper').css('top', curTop+'px');
+              }
+              setTimeout(function(){
+                  inScroll= false;
+                },900);
+            }
+            }});
+        
        
        
        
@@ -332,3 +365,52 @@
                 return true;
             }
         }
+
+
+
+        //yandex maps location
+
+
+
+        ymaps.ready(init);
+
+var placemarks = [
+    {
+        latitude: 59.97,
+        longitude: 30.31,
+
+    },
+    {
+        latitude: 59.94,
+        longitude: 30.25,
+
+    },
+    {
+        latitude: 59.93,
+        longitude: 30.34,
+       
+    }
+],
+    geoObjects= [];
+
+function init() {
+    var map = new ymaps.Map('map', {
+        center: [59.94, 30.32],
+        zoom: 11,
+        controls: ['zoomControl'],
+        behaviors: ['drag']
+    });
+
+    for (var i = 0; i < placemarks.length; i++) {
+            geoObjects[i] = new ymaps.Placemark([placemarks[i].latitude, placemarks[i].longitude],
+            {
+                iconLayout: 'default#image',
+                iconImageHref: 'img/cucumber.svg',
+                iconImageOffset: [-23, -57],
+                iconImageSize: [46, 57]
+            });
+            map.geoObjects.add(geoObjects[i]);
+    };
+
+
+}
