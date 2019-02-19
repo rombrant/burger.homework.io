@@ -389,6 +389,10 @@ var placemarks = [
         latitude: 59.93,
         longitude: 30.34,
        
+    },
+    {
+        latitude: 59.87,
+        longitude: 30.46,
     }
 ],
     geoObjects= [];
@@ -402,10 +406,14 @@ function init() {
     });
 
     for (var i = 0; i < placemarks.length; i++) {
-            geoObjects[i] = new ymaps.Placemark([placemarks[i].latitude, placemarks[i].longitude],
+            geoObjects[i] = new ymaps.Placemark([placemarks[i].latitude, placemarks[i].longitude], {
+                hintContent: '<p class="hint">this is the hint</p>',
+                baloonContent: '<p class="baloon">this is baloon</p>'
+            },
+                
             {
                 iconLayout: 'default#image',
-                iconImageHref: 'img/cucumber.svg',
+                iconImageHref: 'img/map-marker.svg',
                 iconImageOffset: [-23, -57],
                 iconImageSize: [46, 57]
             });
