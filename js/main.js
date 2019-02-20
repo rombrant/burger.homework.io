@@ -400,7 +400,7 @@ var placemarks = [
 function init() {
     var map = new ymaps.Map('map', {
         center: [59.94, 30.32],
-        zoom: 11,
+        zoom: 10,
         controls: ['zoomControl'],
         behaviors: ['drag']
     });
@@ -422,3 +422,13 @@ function init() {
 
 
 }
+
+
+//видеоплеер html5 video api 
+
+
+
+
+
+
+

@@ -1340,7 +1340,7 @@ ul li {
     margin: 0 auto; }
     @media screen and (max-width: 480px) {
       .work-headline {
-        font-size: 2rem; } }
+        font-size: 2.5rem; } }
   .work__player {
     position: relative; }
     .work__player-bg {
@@ -1812,9 +1812,18 @@ ul li {
   font-size: 0.8rem;
   border-radius: 50%; }
 
-div#video_player_box {
-  width: 550px;
-  background: #000;
-  margin: 0px auto; }
+.video_player_block {
+  width: 60%;
+  height: 50%;
+  margin: 0 auto; }
+  @media screen and (max-width: 768px) {
+    .video_player_block {
+      width: 80%; } }
+  @media screen and (max-width: 480px) {
+    .video_player_block {
+      width: 95%; } }
+  .video_player_block-box {
+    width: 100%;
+    height: 100%; }
 
 /*# sourceMappingURL=base.css.map */
